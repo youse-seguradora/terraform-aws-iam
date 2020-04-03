@@ -260,6 +260,20 @@ Use [iam-policy module](https://github.com/terraform-aws-modules/terraform-aws-i
 * [iam-user](https://github.com/terraform-aws-modules/terraform-aws-iam/tree/master/examples/iam-user) - Add IAM user, login profile and access keys (with PGP enabled or disabled)
 * [iam-policy](https://github.com/terraform-aws-modules/terraform-aws-iam/tree/master/examples/iam-policy) - Create IAM policy
 
+## Tests
+
+### Pre-requirements
+
+* [docker](https://docs.docker.com/install/)
+* [docker-compose](https://docs.docker.com/compose/install/)
+* [golang 1.4](https://golang.org/dl/)
+
+### Run Test
+
+```bash
+make test
+```
+
 ## Authors
 
 Module managed by [Anton Babenko](https://github.com/antonbabenko).

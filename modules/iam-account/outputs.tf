@@ -13,6 +13,11 @@ output "this_caller_identity_user_id" {
   value       = element(concat(data.aws_caller_identity.this.*.user_id, [""]), 0)
 }
 
+output "this_account_alias" {
+  description = "The Account Alias"
+  value       = element(concat(aws_iam_account_alias.this.*.account_alias, [""]), 0)
+}
+
 output "this_iam_account_password_policy_expire_passwords" {
   description = "Indicates whether passwords in the account expire. Returns true if max_password_age contains a value greater than 0. Returns false if it is 0 or not present."
   value       = element(concat(aws_iam_account_password_policy.this.*.expire_passwords, [""]), 0)
@@ -30,7 +35,7 @@ output "this_iam_account_password_policy_minimum_password_length" {
 
 output "this_iam_account_password_policy_allow_users_to_change_password" {
   description = "Indicates if IAM user is allowed to changer their passwords."
-  value       = element(concat(aws_iam_account_password_policy.this.*.minimum_password_length, [""]), 0)
+  value       = element(concat(aws_iam_account_password_policy.this.*.allow_users_to_change_password, [""]), 0)
 }
 
 output "this_iam_account_password_policy_password_reuse_prevention" {

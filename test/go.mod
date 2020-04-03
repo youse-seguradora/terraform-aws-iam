@@ -1,4 +1,4 @@
-module iam-account.go
+module terraform-aws-iam
 
 go 1.14
 
