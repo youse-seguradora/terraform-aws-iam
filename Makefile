@@ -12,8 +12,11 @@ help:
 
 .PHONY: test
 test: ## Execute tests
-	@docker-compose run go
-	@dokcer-compose down
+	@docker-compose up
+
+.PHONY: clean
+clean:
+	@docker-compose down
 
 ##@ Release
 
