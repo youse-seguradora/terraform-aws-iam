@@ -16,8 +16,6 @@ These types of resources are supported:
 
 Terraform 0.12. Pin module version to `~> v2.0`. Submit pull-requests to `master` branch.
 
-Terraform 0.11. Pin module version to `~> v1.0`. Submit pull-requests to `terraform011` branch.
-
 ## Features
 
 1. **Cross-account access.** Define IAM roles using `iam_assumable_role` or `iam_assumable_roles` submodules in "resource AWS accounts (prod, staging, dev)" and IAM groups and users using `iam-group-with-assumable-roles-policy` submodule in "IAM AWS Account" to setup access controls between accounts. See [iam-group-with-assumable-roles-policy example](https://github.com/terraform-aws-modules/terraform-aws-iam/tree/master/examples/iam-group-with-assumable-roles-policy) for more details.
@@ -175,7 +173,7 @@ module "iam_group_with_assumable_roles_policy" {
   assumable_roles = [
     "arn:aws:iam::835367859855:role/readonly"  # these roles can be created using `iam_assumable_roles` submodule
   ]
-  
+
   group_users = [
     "user1",
     "user2"
@@ -221,7 +219,7 @@ Use [iam-user module](https://github.com/terraform-aws-modules/terraform-aws-iam
 
 ### 2. Use AWS Defined Policies to Assign Permissions Whenever Possible
 
-Use [iam-assumable-roles module](https://github.com/terraform-aws-modules/terraform-aws-iam/tree/master/modules/iam-assumable-roles) to create IAM roles with managed policies to support common tasks (admin, poweruser or readonly). 
+Use [iam-assumable-roles module](https://github.com/terraform-aws-modules/terraform-aws-iam/tree/master/modules/iam-assumable-roles) to create IAM roles with managed policies to support common tasks (admin, poweruser or readonly).
 
 ### 3. Use Groups to Assign Permissions to IAM Users
 
