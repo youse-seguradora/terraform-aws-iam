@@ -47,6 +47,7 @@ pipeline {
         stage('Run terratest') {
             steps {
                 sh 'make test'
+                sh 'make clean'
             }
         }
     }

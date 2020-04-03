@@ -12,7 +12,7 @@ help:
 
 .PHONY: test
 test: ## Execute tests
-	@docker-compose up
+	@docker-compose up go
 
 .PHONY: clean
 clean:
