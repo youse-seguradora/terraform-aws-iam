@@ -48,7 +48,7 @@ module "iam_account" {
   require_symbols                = true
 }
 
-variable "iam_max_password_age" { }
-variable "iam_account_alias" { }
-variable "iam_minimum_password_length" { }
-variable "iam_password_reuse_prevention" { }
+variable "iam_max_password_age" {}
+variable "iam_account_alias" {}
+variable "iam_minimum_password_length" {}
+variable "iam_password_reuse_prevention" {}

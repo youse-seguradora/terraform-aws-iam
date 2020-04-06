@@ -58,6 +58,7 @@ output "this_iam_account_password_policy_require_numbers" {
   value       = element(concat(aws_iam_account_password_policy.this.*.require_numbers, [""]), 0)
 }
 
+
 output "this_iam_account_password_policy_require_symbols" {
   description = "Whether to require symbols for user passwords."
   value       = element(concat(aws_iam_account_password_policy.this.*.require_symbols, [""]), 0)
