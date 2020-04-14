@@ -1,23 +1,17 @@
-version: '3'
+version: '3.4'
 services:
   localstack:
     image: localstack/localstack
     environment:
-      - SERVICES=${SERVICES- }
-      - DEBUG=${DEBUG- }
-      - DATA_DIR=${DATA_DIR- }
-      - PORT_WEB_UI=${PORT_WEB_UI- }
-      - LAMBDA_EXECUTOR=${LAMBDA_EXECUTOR- }
-      - KINESIS_ERROR_PROBABILITY=${KINESIS_ERROR_PROBABILITY- }
+      - SERVICES=IAM
       - DOCKER_HOST=unix:///var/run/docker.sock
+      - HOSTNAME_EXTERNAL=localstack
   go:
     build:
       context: .
       dockerfile: Dockerfile.go+terraform
     command: >
-        bash -c "cd /code/test
-        && pwd
-        && go test"
+        bash -c "cd /code/test/ && ../wait-for-it.sh localstack:4593 -- go test"
     volumes:
       - .:/code
     depends_on:
