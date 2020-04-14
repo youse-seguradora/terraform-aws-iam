@@ -3,15 +3,24 @@ services:
   localstack:
     image: localstack/localstack
     environment:
-      - SERVICES=IAM
-      - DOCKER_HOST=unix:///var/run/docker.sock
       - HOSTNAME_EXTERNAL=localstack
+      - SERVICES=${SERVICES- }
+      - DEBUG=${DEBUG- }
+      - DATA_DIR=${DATA_DIR- }
+      - PORT_WEB_UI=${PORT_WEB_UI- }
+      - LAMBDA_EXECUTOR=${LAMBDA_EXECUTOR- }
+      - KINESIS_ERROR_PROBABILITY=${KINESIS_ERROR_PROBABILITY- }
+      - DOCKER_HOST=unix:///var/run/docker.sock
+      - HOST_TMP_FOLDER=${TMPDIR}
   go:
     build:
       context: .
       dockerfile: Dockerfile.go+terraform
     command: >
-        bash -c "cd /code/test/ && ../wait-for-it.sh localstack:4593 -- go test"
+        bash -c "cd /code/test/
+        && ../wait-for-it.sh localstack:4593 -- echo "IAM Stated"
+        && ../wait-for-it.sh localstack:4592 -- echo "STS Stated"
+        && go test"
     volumes:
       - .:/code
     depends_on:

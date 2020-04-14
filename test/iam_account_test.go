@@ -2,11 +2,12 @@ package test
 
 import (
 	"fmt"
+	"math/rand"
 	"strconv"
 	"strings"
 	"testing"
+	"time"
 
-	"github.com/gruntwork-io/terratest/modules/aws"
 	"github.com/gruntwork-io/terratest/modules/random"
 	"github.com/gruntwork-io/terratest/modules/terraform"
 	"github.com/stretchr/testify/assert"
@@ -15,12 +16,13 @@ import (
 func TestIAMAccount(t *testing.T) {
 	t.Parallel()
 
+	rand.Seed(time.Now().UnixNano())
+
 	// Expected value
 	expectedName := fmt.Sprintf("terratest-aws-example-%s", strings.ToLower(random.UniqueId()))
-	expectedIAMMaxPasswordAge := random.RandomInt([]int{10, 128})
-	expectedIAMMinimumPasswordLength := random.RandomInt([]int{10, 128})
-	expectedIAMPasswordReusePrevention := random.RandomInt([]int{10, 50})
-	awsRegion := aws.GetRandomStableRegion(t, nil, nil)
+	expectedIAMMaxPasswordAge := rand.Intn(100-10) + 10
+	expectedIAMMinimumPasswordLength := rand.Intn(100-10) + 10
+	expectedIAMPasswordReusePrevention := rand.Intn(15-5) + 5
 
 	terraformOptions := &terraform.Options{
 		TerraformDir: "../examples/iam-account",
@@ -36,7 +38,7 @@ func TestIAMAccount(t *testing.T) {
 
 		// Environment variables to set when running Terraform
 		EnvVars: map[string]string{
-			"AWS_DEFAULT_REGION": awsRegion,
+			"AWS_DEFAULT_REGION": "us-east-1",
 		},
 	}
 
@@ -46,31 +48,31 @@ func TestIAMAccount(t *testing.T) {
 	// This will run `terraform init` and `terraform apply` and fail the test if there are any errors
 	terraform.InitAndApply(t, terraformOptions)
 
-	this_iam_max_password_age := terraform.Output(t, terraformOptions, "this_iam_max_password_age")
-	assert.Equal(t, strconv.Itoa(expectedIAMMaxPasswordAge), this_iam_max_password_age)
+	thiIAMMaxPasswordAge := terraform.Output(t, terraformOptions, "this_iam_max_password_age")
+	assert.Equal(t, strconv.Itoa(expectedIAMMaxPasswordAge), thiIAMMaxPasswordAge)
 
-	this_iam_minimum_password_length := terraform.Output(t, terraformOptions, "this_iam_minimum_password_length")
-	assert.Equal(t, strconv.Itoa(expectedIAMMinimumPasswordLength), this_iam_minimum_password_length)
+	thiIAMMinimumPasswordLength := terraform.Output(t, terraformOptions, "this_iam_minimum_password_length")
+	assert.Equal(t, strconv.Itoa(expectedIAMMinimumPasswordLength), thiIAMMinimumPasswordLength)
 
-	this_iam_password_reuse_prevention := terraform.Output(t, terraformOptions, "this_iam_password_reuse_prevention")
-	assert.Equal(t, strconv.Itoa(expectedIAMPasswordReusePrevention), this_iam_password_reuse_prevention)
+	thiIAMPasswordReusePrevention := terraform.Output(t, terraformOptions, "this_iam_password_reuse_prevention")
+	assert.Equal(t, strconv.Itoa(expectedIAMPasswordReusePrevention), thiIAMPasswordReusePrevention)
 
-	this_iam_allow_users_to_change_password := terraform.Output(t, terraformOptions, "this_iam_allow_users_to_change_password")
-	assert.Equal(t, "true", this_iam_allow_users_to_change_password)
+	thiIAMAllowUsers2ChangePassword := terraform.Output(t, terraformOptions, "this_iam_allow_users_to_change_password")
+	assert.Equal(t, "true", thiIAMAllowUsers2ChangePassword)
 
-	this_iam_require_lowercase_characters := terraform.Output(t, terraformOptions, "this_iam_require_lowercase_characters")
-	assert.Equal(t, "true", this_iam_require_lowercase_characters)
+	thiIAMRequireLowercaseCharacters := terraform.Output(t, terraformOptions, "this_iam_require_lowercase_characters")
+	assert.Equal(t, "true", thiIAMRequireLowercaseCharacters)
 
-	this_iam_require_uppercase_characters := terraform.Output(t, terraformOptions, "this_iam_require_uppercase_characters")
-	assert.Equal(t, "true", this_iam_require_uppercase_characters)
+	thiIAMRequireUppercaseCharacters := terraform.Output(t, terraformOptions, "this_iam_require_uppercase_characters")
+	assert.Equal(t, "true", thiIAMRequireUppercaseCharacters)
 
-	this_iam_require_numbers := terraform.Output(t, terraformOptions, "this_iam_require_numbers")
-	assert.Equal(t, "true", this_iam_require_numbers)
+	thiIAMRequireNumbers := terraform.Output(t, terraformOptions, "this_iam_require_numbers")
+	assert.Equal(t, "true", thiIAMRequireNumbers)
 
-	this_iam_require_symbols := terraform.Output(t, terraformOptions, "this_iam_require_symbols")
-	assert.Equal(t, "true", this_iam_require_symbols)
+	thiIAMRequireSymbols := terraform.Output(t, terraformOptions, "this_iam_require_symbols")
+	assert.Equal(t, "true", thiIAMRequireSymbols)
 
-	this_account_alias := terraform.Output(t, terraformOptions, "this_account_alias")
-	assert.Equal(t, expectedName, this_account_alias)
+	ThisAccountAlias := terraform.Output(t, terraformOptions, "this_account_alias")
+	assert.Equal(t, expectedName, ThisAccountAlias)
 
 }
