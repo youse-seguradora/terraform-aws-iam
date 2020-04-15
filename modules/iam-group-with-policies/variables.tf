@@ -7,7 +7,6 @@ variable "create_group" {
 variable "name" {
   description = "Name of IAM group"
   type        = string
-  default     = ""
 }
 
 variable "group_users" {
@@ -45,4 +44,3 @@ variable "aws_account_id" {
   type        = string
   default     = ""
 }
-

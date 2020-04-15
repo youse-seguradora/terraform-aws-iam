@@ -182,6 +182,7 @@ module "iam_group_with_assumable_roles_policy" {
 ```
 
 `iam-group-with-policies`:
+
 ```hcl
 module "iam_group_with_policies" {
   source  = "terraform-aws-modules/iam/aws//modules/iam-group-with-policies"

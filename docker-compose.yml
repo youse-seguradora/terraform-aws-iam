@@ -17,10 +17,7 @@ services:
       context: .
       dockerfile: Dockerfile.go+terraform
     command: >
-        bash -c "cd /code/test/
-        && ../wait-for-it.sh localstack:4593 -- echo "IAM Stated"
-        && ../wait-for-it.sh localstack:4592 -- echo "STS Stated"
-        && go test"
+        bash -c "cd /code/test/ && go test"
     volumes:
       - .:/code
     depends_on:

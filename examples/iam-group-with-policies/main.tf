@@ -4,7 +4,7 @@
 module "iam_user1" {
   source = "../../modules/iam-user"
 
-  name = "user1"
+  name = var.iam_user_1_name
 
   create_iam_user_login_profile = false
   create_iam_access_key         = false
@@ -13,11 +13,14 @@ module "iam_user1" {
 module "iam_user2" {
   source = "../../modules/iam-user"
 
-  name = "user2"
+  name = var.iam_user_2_name
 
   create_iam_user_login_profile = false
   create_iam_access_key         = false
 }
+
+variable "iam_user_1_name" { }
+variable "iam_user_2_name" { }
 
 #####################################################################################
 # IAM group for superadmins with full Administrator access

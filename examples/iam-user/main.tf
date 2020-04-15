@@ -31,14 +31,15 @@ provider "aws" {
 }
 
 #########################################
-# IAM user, login profile with SSH Key
+# IAM user with LoginProfile, Password and SSH Key
 #########################################
 module "iam_user1" {
   source = "../../modules/iam-user"
 
-  name          = var.iam_user_1_name
-  force_destroy = true
+  name = var.iam_user_1_name
 
+  # User "test" has uploaded his public key here - https://keybase.io/test/pgp_keys.asc
+  pgp_key                 = "keybase:test"
   password_reset_required = false
 
   # SSH public key
@@ -46,17 +47,29 @@ module "iam_user1" {
   ssh_public_key          = var.iam_user_1_ssh_public_key
 }
 
+
+
 ###################################################################
-# IAM user without login_profile
-###################################################################
+# IAM user without login_profile and with SSH Key
+# ###################################################################
 module "iam_user2" {
   source = "../../modules/iam-user"
 
-  name          = var.iam_user_2_name
-  force_destroy = true
+  name = var.iam_user_2_name
 
   create_iam_user_login_profile = false
-  create_iam_access_key         = true
+}
+
+###################################################################
+# IAM user without login_profile ands SSH Key
+# ###################################################################
+module "iam_user3" {
+  source = "../../modules/iam-user"
+
+  name = var.iam_user_3_name
+
+  create_iam_user_login_profile = false
+  create_iam_access_key         = false
 }
 
 ############
@@ -68,3 +81,4 @@ variable "aws_region" {
 variable "iam_user_1_name" {}
 variable "iam_user_1_ssh_public_key" {}
 variable "iam_user_2_name" {}
+variable "iam_user_3_name" {}
