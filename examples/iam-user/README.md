@@ -28,9 +28,14 @@ No provider.
 | iam\_user\_1\_name | n/a | `any` | n/a | yes |
 | iam\_user\_1\_ssh\_public\_key | n/a | `any` | n/a | yes |
 | iam\_user\_2\_name | n/a | `any` | n/a | yes |
+| iam\_user\_3\_name | n/a | `any` | n/a | yes |
 
 ## Outputs
 
-No output.
+| Name | Description |
+|------|-------------|
+| this\_iam\_user\_name1 | ####################### Getting Users Names ####################### |
+| this\_iam\_user\_name2 | n/a |
+| this\_iam\_user\_name3 | n/a |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

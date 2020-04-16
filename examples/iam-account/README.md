@@ -21,13 +21,25 @@ No provider.
 
 ## Inputs
 
-No input.
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:-----:|
+| iam\_account\_alias | n/a | `any` | n/a | yes |
+| iam\_max\_password\_age | n/a | `any` | n/a | yes |
+| iam\_minimum\_password\_length | n/a | `any` | n/a | yes |
+| iam\_password\_reuse\_prevention | n/a | `any` | n/a | yes |
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
-| this\_caller\_identity\_account\_id | The ID of the AWS account |
-| this\_iam\_account\_password\_policy\_expire\_passwords | Indicates whether passwords in the account expire. Returns true if max\_password\_age contains a value greater than 0. Returns false if it is 0 or not present. |
+| this\_account\_alias | n/a |
+| this\_iam\_allow\_users\_to\_change\_password | n/a |
+| this\_iam\_max\_password\_age | n/a |
+| this\_iam\_minimum\_password\_length | n/a |
+| this\_iam\_password\_reuse\_prevention | n/a |
+| this\_iam\_require\_lowercase\_characters | n/a |
+| this\_iam\_require\_numbers | n/a |
+| this\_iam\_require\_symbols | n/a |
+| this\_iam\_require\_uppercase\_characters | n/a |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

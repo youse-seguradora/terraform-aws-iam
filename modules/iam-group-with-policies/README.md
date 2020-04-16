@@ -20,7 +20,7 @@ Creates IAM group with specified IAM policies, and add users into a group.
 | custom\_group\_policy\_arns | List of IAM policies ARNs to attach to IAM group | `list(string)` | `[]` | no |
 | group\_users | List of IAM users to have in an IAM group which can assume the role | `list(string)` | `[]` | no |
 | iam\_self\_management\_policy\_name\_prefix | Name prefix for IAM policy to create with IAM self-management permissions | `string` | `"IAMSelfManagement-"` | no |
-| name | Name of IAM group | `string` | `""` | no |
+| name | Name of IAM group | `string` | n/a | yes |
 
 ## Outputs
 

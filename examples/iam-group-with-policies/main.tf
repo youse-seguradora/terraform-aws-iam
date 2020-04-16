@@ -19,8 +19,8 @@ module "iam_user2" {
   create_iam_access_key         = false
 }
 
-variable "iam_user_1_name" { }
-variable "iam_user_2_name" { }
+variable "iam_user_1_name" {}
+variable "iam_user_2_name" {}
 
 #####################################################################################
 # IAM group for superadmins with full Administrator access

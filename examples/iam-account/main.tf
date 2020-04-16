@@ -7,7 +7,7 @@ provider "aws" {
   skip_metadata_api_check     = true
   skip_requesting_account_id  = true
 
-endpoints {
+  endpoints {
     apigateway     = "http://localstack:4567"
     cloudformation = "http://localstack:4581"
     cloudwatch     = "http://localstack:4582"

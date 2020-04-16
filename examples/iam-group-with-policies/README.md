@@ -23,7 +23,10 @@ Run `terraform destroy` when you don't need these resources.
 
 ## Inputs
 
-No input.
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:-----:|
+| iam\_user\_1\_name | n/a | `any` | n/a | yes |
+| iam\_user\_2\_name | n/a | `any` | n/a | yes |
 
 ## Outputs
 
