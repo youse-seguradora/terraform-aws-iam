@@ -1,7 +1,7 @@
 version: '3.4'
 services:
   localstack:
-    image: localstack/localstack
+    image: localstack/localstack:latest
     environment:
       - HOSTNAME_EXTERNAL=localstack
       - SERVICES=${SERVICES- }
