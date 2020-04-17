@@ -19,7 +19,7 @@ module.iam_account.aws_iam_account_alias.this: Import complete!
 module.iam_account.aws_iam_account_alias.this: Refreshing state... (ID: this)
 
 Import successful!
-``` 
+```
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Providers
@@ -49,9 +49,18 @@ Import successful!
 
 | Name | Description |
 |------|-------------|
+| this\_account\_alias | The Account Alias |
 | this\_caller\_identity\_account\_id | The AWS Account ID number of the account that owns or contains the calling entity |
 | this\_caller\_identity\_arn | The AWS ARN associated with the calling entity |
 | this\_caller\_identity\_user\_id | The unique identifier of the calling entity |
+| this\_iam\_account\_password\_policy\_allow\_users\_to\_change\_password | Indicates if IAM user is allowed to changer their passwords. |
 | this\_iam\_account\_password\_policy\_expire\_passwords | Indicates whether passwords in the account expire. Returns true if max\_password\_age contains a value greater than 0. Returns false if it is 0 or not present. |
+| this\_iam\_account\_password\_policy\_max\_password\_age | Indicates the max age of passwords in IAM user. |
+| this\_iam\_account\_password\_policy\_minimum\_password\_length | Indicates the minimum passwords length for IAM user. |
+| this\_iam\_account\_password\_policy\_password\_reuse\_prevention | The number of previous passwords that users are prevented from reusing. |
+| this\_iam\_account\_password\_policy\_require\_lowercase\_characters | Whether to require lowercase characters for user passwords. |
+| this\_iam\_account\_password\_policy\_require\_numbers | Whether to require numbers for user passwords. |
+| this\_iam\_account\_password\_policy\_require\_symbols | Whether to require symbols for user passwords. |
+| this\_iam\_account\_password\_policy\_require\_uppercase\_characters | Whether to require uppercase characters for user passwords. |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
