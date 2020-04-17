@@ -23,7 +23,9 @@ No provider.
 
 ## Inputs
 
-No input.
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:-----:|
+| iam\_role\_name | n/a | `any` | n/a | yes |
 
 ## Outputs
 
