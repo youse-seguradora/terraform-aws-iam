@@ -25,6 +25,8 @@ Run `terraform destroy` when you don't need these resources.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:-----:|
+| iam\_group\_name\_1 | n/a | `any` | n/a | yes |
+| iam\_group\_name\_2 | n/a | `any` | n/a | yes |
 | iam\_user\_1\_name | n/a | `any` | n/a | yes |
 | iam\_user\_2\_name | n/a | `any` | n/a | yes |
 
@@ -32,8 +34,9 @@ Run `terraform destroy` when you don't need these resources.
 
 | Name | Description |
 |------|-------------|
-| iam\_account\_id | IAM AWS account id |
-| this\_group\_name | IAM group name |
-| this\_group\_users | List of IAM users in IAM group |
+| this\_group\_1\_name | IAM group name |
+| this\_group\_1\_users\_names | List of IAM users in IAM group |
+| this\_group\_2\_name | IAM group name |
+| this\_group\_2\_users\_names | List of IAM users in IAM group |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
