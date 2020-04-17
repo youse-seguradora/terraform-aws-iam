@@ -23,13 +23,18 @@ No provider.
 
 ## Inputs
 
-No input.
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:-----:|
+| iam\_group\_name | n/a | `any` | n/a | yes |
+| iam\_user\_1\_name | n/a | `any` | n/a | yes |
+| iam\_user\_2\_name | n/a | `any` | n/a | yes |
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
 | this\_assumable\_roles | List of ARNs of IAM roles which members of IAM group can assume |
+| this\_group\_name | n/a |
 | this\_group\_users | List of IAM users in IAM group |
 | this\_policy\_arn | Assume role policy ARN for IAM group |
 

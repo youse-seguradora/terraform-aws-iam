@@ -51,13 +51,16 @@ module "iam_user2" {
   create_iam_access_key         = false
 }
 
+variable "iam_user_1_name" {}
+variable "iam_user_2_name" {}
+
 #############################################################################################
 # IAM group where user1 and user2 are allowed to assume admin role in production AWS account
 #############################################################################################
 module "iam_group_complete" {
   source = "../../modules/iam-group-with-assumable-roles-policy"
 
-  name = "production-admins"
+  name = var.iam_group_name
 
   assumable_roles = ["arn:aws:iam::111111111111:role/admin"]
 
@@ -66,6 +69,8 @@ module "iam_group_complete" {
     module.iam_user2.this_iam_user_name,
   ]
 }
+
+variable "iam_group_name" {}
 
 ####################################################
 # Extending policies of IAM group production-admins

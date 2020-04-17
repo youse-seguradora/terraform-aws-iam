@@ -10,7 +10,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestIAMGroup(t *testing.T) {
+func TestIAMGroupWithPolicies(t *testing.T) {
 	t.Parallel()
 
 	// Expected value
