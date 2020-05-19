@@ -1,13 +1,26 @@
 version: 2
 
-terraform: &terraform
-  docker:
-    - image: hashicorp/terraform:0.12.25
-  working_directory: /tmp/workspace/terraform
+commands:
+  terraform-install:
+    description: "Install Terraform"
+    parameters:
+      version:
+        type: string
+        default: "0.12.24"
+    steps:
+      - run:
+          command: |
+            apt-get update && apt-get install -y unzip
+            set -eu;
+            if ! [ -x "$(command -v terraform)" ]; then
+              wget -O /tmp/terraform.zip https://releases.hashicorp.com/terraform/<< parameters.version >>/terraform_<< parameters.version >>_linux_amd64.zip \
+              && unzip /tmp/terraform.zip -d /usr/local/bin;
+            fi;
 
 jobs:
   validate:
-    <<: *terraform
+    docker:
+      - image: hashicorp/terraform:0.12.25
     steps:
       - checkout
       - run:
@@ -17,7 +30,7 @@ jobs:
           name: Validate Terraform configurations
           command: find . -name ".terraform" -prune -o -type f -name "*.tf" -exec dirname {} \;|sort -u | while read m; do (cd "$m" && terraform validate && echo "√ $m") || exit 1 ; done
           environment:
-              AWS_DEFAULT_REGION: us-east-1
+            AWS_DEFAULT_REGION: us-east-1
       - run:
           name: Check if Terraform configurations are properly formatted
           command: if [[ -n "$(terraform fmt -write=false)" ]]; then echo "Some terraform files need be formatted, run 'terraform fmt' to fix"; exit 1; fi
@@ -27,9 +40,22 @@ jobs:
       - run:
           name: Check Terraform configurations with tflint
           command: tflint
+  terratest:
+    docker:
+      - image: circleci/golang:1.14.1-stretch
+      - image: localstack/localstack:latest
+    steps:
+      - checkout
+      - terraform-install
+      - run:
+          name: Go test
+          command: |
+            cd /code/test/ \
+            && go test
 
 workflows:
   version: 2
   build:
     jobs:
       - validate
+      - terratest
