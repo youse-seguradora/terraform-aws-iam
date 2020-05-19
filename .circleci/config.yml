@@ -38,6 +38,8 @@ jobs:
     docker:
       - image: circleci/golang:1.14.1-stretch
       - image: localstack/localstack:latest
+    environment:
+      GOCACHE: "/tmp/go/cache"
     steps:
       - checkout
       - run:
@@ -59,7 +61,7 @@ jobs:
       - save_cache:
           key: v1-pkg-cache
           paths:
-            - "/go/pkg"
+            - "/tmp/go/cache"
   tag:
     docker:
       - image: cimg/base:2020.01
