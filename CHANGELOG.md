@@ -7,18 +7,6 @@ All notable changes to this project will be documented in this file.
 
 
 
-<<<<<<< HEAD
-<a name="v2.9.0"></a>
-## [v2.9.0] - 0001-01-01
-
-
-
-<a name="v2.8.0"></a>
-## [v2.8.0] - 2020-04-17
-
-- Adding support to terratest ([#1](https://github.com/youse-seguradora/terraform-aws-iam/issues/1))
-- Adding DevSecOps team as Code Owner
-=======
 <a name="v2.21.0"></a>
 ## [v2.21.0] - 2020-09-22
 
@@ -105,7 +93,6 @@ All notable changes to this project will be documented in this file.
 - docs: Add note about pgp_key when create_iam_login_profile is set ([#69](https://github.com/terraform-aws-modules/terraform-aws-iam/issues/69))
 - fix: Fix module source and name in README ([#65](https://github.com/terraform-aws-modules/terraform-aws-iam/issues/65))
 - fix typo ([#62](https://github.com/terraform-aws-modules/terraform-aws-iam/issues/62))
->>>>>>> upstream/master
 
 
 <a name="v2.7.0"></a>
@@ -118,21 +105,13 @@ All notable changes to this project will be documented in this file.
 <a name="v2.6.0"></a>
 ## [v2.6.0] - 2020-01-27
 
-<<<<<<< HEAD
-- Rename module from "*-iodc" to "*-oidc" ([#48](https://github.com/youse-seguradora/terraform-aws-iam/issues/48))
-=======
 - Rename module from "*-iodc" to "*-oidc" ([#48](https://github.com/terraform-aws-modules/terraform-aws-iam/issues/48))
->>>>>>> upstream/master
 
 
 <a name="v2.5.0"></a>
 ## [v2.5.0] - 2020-01-27
 
-<<<<<<< HEAD
-- New sub-module for IAM assumable role with OIDC ([#37](https://github.com/youse-seguradora/terraform-aws-iam/issues/37))
-=======
 - New sub-module for IAM assumable role with OIDC ([#37](https://github.com/terraform-aws-modules/terraform-aws-iam/issues/37))
->>>>>>> upstream/master
 
 
 <a name="v2.4.0"></a>
@@ -146,11 +125,7 @@ All notable changes to this project will be documented in this file.
 <a name="v2.3.0"></a>
 ## [v2.3.0] - 2019-08-21
 
-<<<<<<< HEAD
-- Added description support for custom group policies using a lookup ([#33](https://github.com/youse-seguradora/terraform-aws-iam/issues/33))
-=======
 - Added description support for custom group policies using a lookup ([#33](https://github.com/terraform-aws-modules/terraform-aws-iam/issues/33))
->>>>>>> upstream/master
 
 
 <a name="v2.2.0"></a>
@@ -164,33 +139,20 @@ All notable changes to this project will be documented in this file.
 <a name="v2.1.0"></a>
 ## [v2.1.0] - 2019-06-11
 
-<<<<<<< HEAD
-- Removed duplicated tags from variables in iam-user ([#30](https://github.com/youse-seguradora/terraform-aws-iam/issues/30))
-=======
 - Removed duplicated tags from variables in iam-user ([#30](https://github.com/terraform-aws-modules/terraform-aws-iam/issues/30))
->>>>>>> upstream/master
 
 
 <a name="v2.0.0"></a>
 ## [v2.0.0] - 2019-06-11
 
-<<<<<<< HEAD
-- Upgraded module to support Terraform 0.12 ([#29](https://github.com/youse-seguradora/terraform-aws-iam/issues/29))
-=======
 - Upgraded module to support Terraform 0.12 ([#29](https://github.com/terraform-aws-modules/terraform-aws-iam/issues/29))
->>>>>>> upstream/master
 
 
 <a name="v1.0.0"></a>
 ## [v1.0.0] - 2019-06-11
 
-<<<<<<< HEAD
-- Fixed styles after [#26](https://github.com/youse-seguradora/terraform-aws-iam/issues/26)
-- iam-user,iam-assumable-role,iam-assumable-roles,iam-assumable-roles-with-saml tags support ([#26](https://github.com/youse-seguradora/terraform-aws-iam/issues/26))
-=======
 - Fixed styles after [#26](https://github.com/terraform-aws-modules/terraform-aws-iam/issues/26)
 - iam-user,iam-assumable-role,iam-assumable-roles,iam-assumable-roles-with-saml tags support ([#26](https://github.com/terraform-aws-modules/terraform-aws-iam/issues/26))
->>>>>>> upstream/master
 
 
 <a name="v0.5.0"></a>
@@ -274,31 +236,6 @@ All notable changes to this project will be documented in this file.
 - Initial commit
 
 
-<<<<<<< HEAD
-[Unreleased]: https://github.com/youse-seguradora/terraform-aws-iam/compare/v2.9.0...HEAD
-[v2.9.0]: https://github.com/youse-seguradora/terraform-aws-iam/compare/v2.8.0...v2.9.0
-[v2.8.0]: https://github.com/youse-seguradora/terraform-aws-iam/compare/v2.7.0...v2.8.0
-[v2.7.0]: https://github.com/youse-seguradora/terraform-aws-iam/compare/v2.6.0...v2.7.0
-[v2.6.0]: https://github.com/youse-seguradora/terraform-aws-iam/compare/v2.5.0...v2.6.0
-[v2.5.0]: https://github.com/youse-seguradora/terraform-aws-iam/compare/v2.4.0...v2.5.0
-[v2.4.0]: https://github.com/youse-seguradora/terraform-aws-iam/compare/v2.3.0...v2.4.0
-[v2.3.0]: https://github.com/youse-seguradora/terraform-aws-iam/compare/v2.2.0...v2.3.0
-[v2.2.0]: https://github.com/youse-seguradora/terraform-aws-iam/compare/v2.1.0...v2.2.0
-[v2.1.0]: https://github.com/youse-seguradora/terraform-aws-iam/compare/v2.0.0...v2.1.0
-[v2.0.0]: https://github.com/youse-seguradora/terraform-aws-iam/compare/v1.0.0...v2.0.0
-[v1.0.0]: https://github.com/youse-seguradora/terraform-aws-iam/compare/v0.5.0...v1.0.0
-[v0.5.0]: https://github.com/youse-seguradora/terraform-aws-iam/compare/v0.4.0...v0.5.0
-[v0.4.0]: https://github.com/youse-seguradora/terraform-aws-iam/compare/v0.3.0...v0.4.0
-[v0.3.0]: https://github.com/youse-seguradora/terraform-aws-iam/compare/v0.2.0...v0.3.0
-[v0.2.0]: https://github.com/youse-seguradora/terraform-aws-iam/compare/v0.1.0...v0.2.0
-[v0.1.0]: https://github.com/youse-seguradora/terraform-aws-iam/compare/v0.0.7...v0.1.0
-[v0.0.7]: https://github.com/youse-seguradora/terraform-aws-iam/compare/v0.0.6...v0.0.7
-[v0.0.6]: https://github.com/youse-seguradora/terraform-aws-iam/compare/v0.0.5...v0.0.6
-[v0.0.5]: https://github.com/youse-seguradora/terraform-aws-iam/compare/v0.0.4...v0.0.5
-[v0.0.4]: https://github.com/youse-seguradora/terraform-aws-iam/compare/v0.0.3...v0.0.4
-[v0.0.3]: https://github.com/youse-seguradora/terraform-aws-iam/compare/v0.0.2...v0.0.3
-[v0.0.2]: https://github.com/youse-seguradora/terraform-aws-iam/compare/v0.0.1...v0.0.2
-=======
 [Unreleased]: https://github.com/terraform-aws-modules/terraform-aws-iam/compare/v2.21.0...HEAD
 [v2.21.0]: https://github.com/terraform-aws-modules/terraform-aws-iam/compare/v2.20.0...v2.21.0
 [v2.20.0]: https://github.com/terraform-aws-modules/terraform-aws-iam/compare/v2.19.0...v2.20.0
@@ -334,4 +271,3 @@ All notable changes to this project will be documented in this file.
 [v0.0.4]: https://github.com/terraform-aws-modules/terraform-aws-iam/compare/v0.0.3...v0.0.4
 [v0.0.3]: https://github.com/terraform-aws-modules/terraform-aws-iam/compare/v0.0.2...v0.0.3
 [v0.0.2]: https://github.com/terraform-aws-modules/terraform-aws-iam/compare/v0.0.1...v0.0.2
->>>>>>> upstream/master

@@ -4,10 +4,6 @@
 output "this_iam_user_name1" {
   value = module.iam_user1.this_iam_user_name
 }
-<<<<<<< HEAD
-output "this_iam_user_name2" {
-  value = module.iam_user2.this_iam_user_name
-=======
 
 output "this_iam_user_arn" {
   description = "The ARN assigned by AWS for this user"
@@ -74,7 +70,6 @@ output "keybase_password_pgp_message" {
 
 output "keybase_secret_key_decrypt_command" {
   value = module.iam_user.keybase_secret_key_decrypt_command
->>>>>>> upstream/master
 }
 
 output "this_iam_user_name3" {
