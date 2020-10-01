@@ -61,8 +61,13 @@ module "iam_assumable_role" {
 
 `iam-assumable-role-with-oidc`:
 ```hcl
+<<<<<<< HEAD
 module "iam_assumable_role" {
   source = "youse-seguradora/iam/aws//modules/iam-assumable-role"
+=======
+module "iam_assumable_role_with_oidc" {
+  source = "terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc"
+>>>>>>> upstream/master
   version = "~> 2.0"
 
   create_role = true

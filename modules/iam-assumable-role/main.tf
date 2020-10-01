@@ -2,7 +2,7 @@ data "aws_iam_policy_document" "assume_role" {
   statement {
     effect = "Allow"
 
-    actions = ["sts:AssumeRole"]
+    actions = var.trusted_role_actions
 
     principals {
       type        = "AWS"
@@ -12,6 +12,15 @@ data "aws_iam_policy_document" "assume_role" {
     principals {
       type        = "Service"
       identifiers = var.trusted_role_services
+    }
+
+    dynamic "condition" {
+      for_each = var.role_sts_externalid != null ? [true] : []
+      content {
+        test     = "StringEquals"
+        variable = "sts:ExternalId"
+        values   = [var.role_sts_externalid]
+      }
     }
   }
 }
@@ -54,7 +63,8 @@ resource "aws_iam_role" "this" {
   max_session_duration = var.max_session_duration
   description          = var.role_description
 
-  permissions_boundary = var.role_permissions_boundary_arn
+  force_detach_policies = var.force_detach_policies
+  permissions_boundary  = var.role_permissions_boundary_arn
 
   assume_role_policy = var.role_requires_mfa ? data.aws_iam_policy_document.assume_role_with_mfa.json : data.aws_iam_policy_document.assume_role.json
 
@@ -62,7 +72,7 @@ resource "aws_iam_role" "this" {
 }
 
 resource "aws_iam_role_policy_attachment" "custom" {
-  count = var.create_role && length(var.custom_role_policy_arns) > 0 ? length(var.custom_role_policy_arns) : 0
+  count = var.create_role ? length(var.custom_role_policy_arns) : 0
 
   role       = aws_iam_role.this[0].name
   policy_arn = element(var.custom_role_policy_arns, count.index)

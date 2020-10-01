@@ -78,6 +78,8 @@ module "iam_assumable_role_custom" {
   role_name         = "custom"
   role_requires_mfa = false
 
+  role_sts_externalid = "some-id-goes-here"
+
   custom_role_policy_arns = [
     "arn:aws:iam::aws:policy/AmazonCognitoReadOnly",
     "arn:aws:iam::aws:policy/AlexaForBusinessFullAccess",
