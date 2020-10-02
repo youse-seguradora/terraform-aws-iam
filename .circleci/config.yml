@@ -40,6 +40,11 @@ jobs:
       - image: localstack/localstack:latest
     steps:
       - checkout
+      - aws-cli/setup:
+          aws-access-key-id: AWS_BRA_DEV_ACCESS_KEY_ID
+          aws-secret-access-key: AWS_BRA_DEV_SECRET_ACCESS_KEY
+          configure-default-region: false
+          profile-name: cicd
       - run:
           name: Install Terraform
           command: |
