@@ -1,4 +1,6 @@
 version: 2.1
+orbs:
+  aws-cli: circleci/aws-cli@1.0.0
 
 commands:
   semtag:
@@ -14,7 +16,7 @@ commands:
 jobs:
   validate:
     docker:
-      - image: hashicorp/terraform:0.12.24
+      - image: hashicorp/terraform:0.12.26
     steps:
       - checkout
       - run:
@@ -40,11 +42,16 @@ jobs:
       - image: localstack/localstack:latest
     steps:
       - checkout
+      - aws-cli/setup:
+          aws-access-key-id: AWS_BRA_DEV_ACCESS_KEY_ID
+          aws-secret-access-key: AWS_BRA_DEV_SECRET_ACCESS_KEY
+          configure-default-region: false
+          profile-name: cicd
       - run:
           name: Install Terraform
           command: |
             if ! [ -x "$(command -v terraform)" ]; then
-              wget -O /tmp/terraform.zip https://releases.hashicorp.com/terraform/0.12.24/terraform_0.12.24_linux_amd64.zip
+              wget -O /tmp/terraform.zip https://releases.hashicorp.com/terraform/0.12.26/terraform_0.12.26_linux_amd64.zip
               sudo unzip /tmp/terraform.zip -d /usr/local/bin;
               terraform --version
             fi;
@@ -55,7 +62,7 @@ jobs:
           name: Running GOLang test
           command: |
             cd test
-            go test
+            go test -timeout 1h
       - save_cache:
           key: v1-pkg-cache
           paths:
@@ -79,7 +86,8 @@ workflows:
   build:
     jobs:
       - validate
-      - terratest
+      - terratest:
+          context: aws-bra-dev
       - tag:
           requires:
             - validate

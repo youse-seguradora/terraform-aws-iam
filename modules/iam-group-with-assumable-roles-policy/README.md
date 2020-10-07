@@ -3,16 +3,23 @@
 Creates IAM group with users who are allowed to assume IAM roles. This is typically done in resource AWS account where IAM users can jump into from IAM AWS account.
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+## Requirements
+
+| Name | Version |
+|------|---------|
+| terraform | >= 0.12.6, < 0.14 |
+| aws | >= 2.23, < 4.0 |
+
 ## Providers
 
 | Name | Version |
 |------|---------|
-| aws | ~> 2.23 |
+| aws | >= 2.23, < 4.0 |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:-----:|
+|------|-------------|------|---------|:--------:|
 | assumable\_roles | List of IAM roles ARNs which can be assumed by the group | `list(string)` | `[]` | no |
 | group\_users | List of IAM users to have in an IAM group which can assume the role | `list(string)` | `[]` | no |
 | name | Name of IAM policy and IAM group | `string` | n/a | yes |
