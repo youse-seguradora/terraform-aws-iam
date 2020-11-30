@@ -76,3 +76,6 @@ variable "force_detach_policies" {
   default     = false
 }
 
+variable "identifiers_urls" {
+  default = []
+}
