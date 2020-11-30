@@ -48,7 +48,20 @@ data "aws_iam_policy_document" "assume_role_with_oidc" {
       }
     }
   }
+  dynamic "statement" {
+    for_each = length(var.urls_identifiers) > 0 ? ["create_policy"] : []
+    content {
+      sid     = "TrustedService"
+      effect  = "Allow"
+      actions = ["sts:AssumeRole"]
+      principals {
+        identifiers = var.urls_identifiers
+        type        = "Service"
+      }
+    }
+  }
 }
+
 
 resource "aws_iam_role" "this" {
   count = var.create_role ? 1 : 0
